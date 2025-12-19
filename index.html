@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Resources</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #eee;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .game-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,217,255,0.2);
+            border-color: rgba(0,217,255,0.3);
+        }
+        .game-card h3 {
+            margin-bottom: 8px;
+            color: #00d9ff;
+        }
+        .game-card p {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .tools-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .tools-section h2 {
+            margin-bottom: 20px;
+            color: #00ff88;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resource Library</h1>
+        <p class="subtitle">Interactive learning materials</p>
+
+        <div class="games-grid" id="gamesList">
+            <!-- Games loaded dynamically -->
+        </div>
+
+        <div class="tools-section">
+            <h2>Tools</h2>
+            <a href="encoder.html" class="btn">Content Encoder</a>
+        </div>
+    </div>
+
+    <script>
+        // Game registry - add your games here
+        const games = [
+            {
+                id: 'snake',
+                title: 'Pattern Recognition',
+                description: 'A classic coordination exercise'
+            },
+            // Add more games here
+        ];
+
+        const gamesList = document.getElementById('gamesList');
+        games.forEach(game => {
+            const card = document.createElement('a');
+            card.href = `play.html?g=${game.id}`;
+            card.className = 'game-card';
+            card.innerHTML = `
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+            `;
+            gamesList.appendChild(card);
+        });
+    </script>
+</body>
+</html>
